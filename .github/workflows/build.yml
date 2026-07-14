@@ -24,4 +24,4 @@ jobs:
           distribution: 'temurin'
 
       - name: Build
-        run: echo "Build pipeline will be configured with Maven"
+        run: mvn -B clean verify
