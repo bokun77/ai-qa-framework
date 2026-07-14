@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.bokun77</groupId>
-    <artifactId>enterprise-ai-qa-framework</artifactId>
+    <artifactId>ai-qa-framework</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Enterprise AI QA Framework</name>
-    <description>Enterprise-grade AI-powered QA Automation Framework</description>
+    <name>AI QA Framework</name>
+    <description>AI-QA Automation Framework</description>
 
     <modules>
         <module>qa-core</module>
