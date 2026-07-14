@@ -20,7 +20,7 @@ Selenium has been one of the most widely adopted browser automation frameworks a
 
 ## Decision
 
-We will use Selenium WebDriver as the primary browser automation technology for enterprise-ai-qa-framework.
+We will use Selenium WebDriver as the primary browser automation technology for ai-qa-framework.
 
 Selenium provides:
 

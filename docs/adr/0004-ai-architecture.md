@@ -1,4 +1,4 @@
-# ADR 0005: AI Architecture Strategy
+# ADR 0004: AI Architecture Strategy
 
 ## Status
 
@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-The goal of enterprise-ai-qa-framework is to provide a modern QA automation platform that combines traditional test automation capabilities with artificial intelligence.
+The goal of ai-qa-framework is to provide a modern QA automation platform that combines traditional test automation capabilities with artificial intelligence.
 
 Enterprise testing environments face several challenges:
 

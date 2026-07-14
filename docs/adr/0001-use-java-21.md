@@ -14,7 +14,7 @@ The project needs a version of Java that provides modern language features while
 
 ## Decision
 
-We will use Java 21 LTS as the baseline version for enterprise-ai-qa-framework.
+We will use Java 21 LTS as the baseline version for ai-qa-framework.
 
 Java 21 provides:
 

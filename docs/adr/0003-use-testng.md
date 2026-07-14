@@ -21,7 +21,7 @@ The framework should support large test suites executed across different environ
 
 ## Decision
 
-We will use TestNG as the primary test execution framework for enterprise-ai-qa-framework.
+We will use TestNG as the primary test execution framework for ai-qa-framework.
 
 TestNG provides:
 
