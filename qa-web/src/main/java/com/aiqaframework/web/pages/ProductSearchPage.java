@@ -2,6 +2,7 @@ package com.aiqaframework.web.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -28,7 +29,11 @@ public class ProductSearchPage extends BasePage {
     }
 
     public List<String> getResultNames() {
-        waitForVisible(RESULT_NAMES);
+        try {
+            waitForVisible(RESULT_NAMES);
+        } catch (TimeoutException noResults) {
+            return List.of();
+        }
         return driver.findElements(RESULT_NAMES).stream().map(WebElement::getText).toList();
     }
 }
