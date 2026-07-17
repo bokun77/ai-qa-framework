@@ -2,6 +2,7 @@ package com.aiqaframework.web;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public final class WebDriverFactory {
 
@@ -9,6 +10,14 @@ public final class WebDriverFactory {
     }
 
     public static WebDriver createChromeDriver() {
-        return new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+
+        if (Boolean.parseBoolean(System.getenv("CI"))) {
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+        }
+
+        return new ChromeDriver(options);
     }
 }
