@@ -1,31 +1,13 @@
 package com.aiqaframework.test;
 
 import com.aiqaframework.core.TestConfig;
-import com.aiqaframework.web.WebDriverFactory;
 import com.aiqaframework.web.pages.JuiceShopHomePage;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 /** Verifies the Juice Shop homepage loads successfully in a browser. */
-public class JuiceShopHomePageTest {
-
-    private WebDriver driver;
-
-    @BeforeMethod
-    public void setUp() {
-        driver = WebDriverFactory.createChromeDriver();
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+public class JuiceShopHomePageTest extends BaseUiTest {
 
     @Test(groups = "ui")
     public void homePageLoadsWithExpectedTitle() {

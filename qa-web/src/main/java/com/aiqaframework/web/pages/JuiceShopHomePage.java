@@ -2,12 +2,10 @@ package com.aiqaframework.web.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class JuiceShopHomePage {
-
-    private final WebDriver driver;
+public class JuiceShopHomePage extends BasePage {
 
     public JuiceShopHomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void open(String baseUrl) {

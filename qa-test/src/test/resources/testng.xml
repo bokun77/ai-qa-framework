@@ -4,12 +4,14 @@
     <test name="API Tests">
         <classes>
             <class name="com.aiqaframework.test.JuiceShopProductsApiTest"/>
+            <class name="com.aiqaframework.test.JuiceShopLoginApiTest"/>
         </classes>
     </test>
 
     <test name="UI Tests">
         <classes>
             <class name="com.aiqaframework.test.JuiceShopHomePageTest"/>
+            <class name="com.aiqaframework.test.LoginTest"/>
         </classes>
     </test>
 
