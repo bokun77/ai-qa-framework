@@ -25,14 +25,14 @@ public final class ExecutionReportWriter {
     public static synchronized void record(String testName, String status, Path screenshot, String failureMessage) {
         StringBuilder line = new StringBuilder()
                 .append(LocalDateTime.now()).append(" | ")
-                .append(status).append(" | ")
-                .append(testName);
+                .append(escape(status)).append(" | ")
+                .append(escape(testName));
 
         if (screenshot != null) {
-            line.append(" | screenshot=").append(screenshot);
+            line.append(" | screenshot=").append(escape(screenshot.toString()));
         }
         if (failureMessage != null) {
-            line.append(" | message=").append(failureMessage.replace(System.lineSeparator(), " "));
+            line.append(" | message=").append(escape(failureMessage));
         }
         line.append(System.lineSeparator());
 
@@ -41,6 +41,22 @@ public final class ExecutionReportWriter {
         } catch (IOException e) {
             LOGGER.warn("Failed to write execution summary for {}", testName, e);
         }
+    }
+
+    /**
+     * Escapes backslashes and {@code |} so field values can never be mistaken for the
+     * {@code " | "} field delimiter, then collapses line breaks to a single space.
+     */
+    private static String escape(String value) {
+        if (value == null) {
+            return null;
+        }
+        return value
+                .replace("\\", "\\\\")
+                .replace("|", "\\|")
+                .replace(System.lineSeparator(), " ")
+                .replace("\n", " ")
+                .replace("\r", " ");
     }
 
     private static void resetSummaryFile() {
