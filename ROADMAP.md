@@ -29,6 +29,10 @@ The Failure Analyzer is the first of six planned AI capabilities ([ADR-0004](doc
 - Documentation Assistant — needs a stable set of artifacts across multiple capabilities to summarize
 - Reporting Intelligence — needs trend data across multiple executions, not just a single run
 
+## MCP Integration (future)
+
+Per [ADR-0006](docs/adr/0006-mcp-integration-strategy.md), MCP is planned as a separate development/tooling layer for exposing framework data to external AI clients, living outside the Maven reactor and independent of `qa-ai`. It is not yet implemented. The first planned capability is a read-only test summary reader, gated on a follow-up implementation plan.
+
 ## Beyond AI capability work
 
 Longer-term directions noted in [ADR-0004](docs/adr/0004-ai-architecture.md)'s Future Evolution section, not yet scheduled:
