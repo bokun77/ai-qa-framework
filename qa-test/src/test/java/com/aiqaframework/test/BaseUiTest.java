@@ -9,12 +9,12 @@ public abstract class BaseUiTest {
 
     protected WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUpDriver() {
         driver = WebDriverFactory.createChromeDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDownDriver() {
         if (driver != null) {
             driver.quit();

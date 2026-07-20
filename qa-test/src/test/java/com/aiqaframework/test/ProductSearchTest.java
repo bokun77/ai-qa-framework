@@ -10,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 /** Verifies searching for a product shows matching results in the UI. */
 public class ProductSearchTest extends BaseUiTest {
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "regression"})
     public void searchReturnsMatchingProducts() {
         ProductSearchPage searchPage = new ProductSearchPage(driver);
 
@@ -21,7 +21,7 @@ public class ProductSearchTest extends BaseUiTest {
                 .anyMatch(name -> name.toLowerCase().contains("apple")));
     }
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "regression"})
     public void searchWithNoMatchReturnsNoResults() {
         ProductSearchPage searchPage = new ProductSearchPage(driver);
 
@@ -31,7 +31,7 @@ public class ProductSearchTest extends BaseUiTest {
         assertTrue(searchPage.getResultNames().isEmpty());
     }
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "regression"})
     public void emptySearchShowsAllProducts() {
         ProductSearchPage searchPage = new ProductSearchPage(driver);
 
@@ -41,7 +41,7 @@ public class ProductSearchTest extends BaseUiTest {
         assertFalse(searchPage.getResultNames().isEmpty());
     }
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "regression"})
     public void searchWithSpecialCharactersReturnsNoResults() {
         ProductSearchPage searchPage = new ProductSearchPage(driver);
 

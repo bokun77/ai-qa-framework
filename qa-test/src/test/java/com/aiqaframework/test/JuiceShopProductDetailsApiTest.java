@@ -13,7 +13,7 @@ public class JuiceShopProductDetailsApiTest {
     private static final int VALID_PRODUCT_ID = 1;
     private static final int UNKNOWN_PRODUCT_ID = 999999;
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void getProductByIdReturnsOk() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 
@@ -23,7 +23,7 @@ public class JuiceShopProductDetailsApiTest {
         assertEquals(response.jsonPath().getInt("data.id"), VALID_PRODUCT_ID);
     }
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void getProductByUnknownIdReturnsNotFound() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 

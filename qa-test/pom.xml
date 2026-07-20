@@ -13,6 +13,10 @@
 
     <artifactId>qa-test</artifactId>
 
+    <properties>
+        <groups></groups>
+    </properties>
+
     <dependencies>
 
         <dependency>
@@ -67,6 +71,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <groups>${groups}</groups>
                 </configuration>
             </plugin>
 

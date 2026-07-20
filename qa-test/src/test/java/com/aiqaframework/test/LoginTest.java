@@ -10,7 +10,7 @@ import static org.testng.Assert.assertFalse;
 /** Verifies login succeeds with valid credentials and fails with a clear error otherwise. */
 public class LoginTest extends BaseUiTest {
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "smoke"})
     public void validCredentialsLogInSuccessfully() {
         LoginPage loginPage = new LoginPage(driver);
 
@@ -21,7 +21,7 @@ public class LoginTest extends BaseUiTest {
         assertFalse(driver.getCurrentUrl().contains("/login"));
     }
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "regression"})
     public void invalidCredentialsShowError() {
         LoginPage loginPage = new LoginPage(driver);
 

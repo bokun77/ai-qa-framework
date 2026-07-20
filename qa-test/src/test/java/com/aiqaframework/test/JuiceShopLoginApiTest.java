@@ -13,7 +13,7 @@ import static org.testng.Assert.assertNotNull;
 /** Verifies the Juice Shop login API authenticates valid credentials and rejects invalid ones. */
 public class JuiceShopLoginApiTest {
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void loginWithValidCredentialsReturnsToken() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 
@@ -24,7 +24,7 @@ public class JuiceShopLoginApiTest {
         assertNotNull(response.jsonPath().getString("authentication.token"));
     }
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void loginWithInvalidCredentialsReturnsUnauthorized() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 

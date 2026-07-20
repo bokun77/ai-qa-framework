@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 /** Verifies opening product details from search results shows the matching product. */
 public class ProductDetailsTest extends BaseUiTest {
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "regression"})
     public void openingProductDetailsShowsMatchingProduct() {
         ProductSearchPage searchPage = new ProductSearchPage(driver);
 

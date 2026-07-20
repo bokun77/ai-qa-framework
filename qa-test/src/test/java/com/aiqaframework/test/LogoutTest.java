@@ -9,7 +9,7 @@ import static org.testng.Assert.assertTrue;
 /** Verifies a logged-in user can log out and the navbar reflects the logged-out state. */
 public class LogoutTest extends BaseUiTest {
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "smoke"})
     public void loggedInUserCanLogOut() {
         LoginPage loginPage = new LoginPage(driver);
 

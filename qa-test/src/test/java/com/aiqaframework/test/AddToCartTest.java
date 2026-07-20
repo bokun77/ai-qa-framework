@@ -9,7 +9,7 @@ import static org.testng.Assert.assertEquals;
 /** Verifies adding a product to the cart increments the cart item count. */
 public class AddToCartTest extends BaseUiTest {
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "regression"})
     public void addingProductToCartIncrementsCartCount() {
         ProductSearchPage searchPage = new ProductSearchPage(driver);
 

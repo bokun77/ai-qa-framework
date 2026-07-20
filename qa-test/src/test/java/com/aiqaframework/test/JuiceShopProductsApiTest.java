@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 /** Verifies the Juice Shop products API responds successfully with product data. */
 public class JuiceShopProductsApiTest {
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void getProductsReturnsOk() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 

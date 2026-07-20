@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 /** Verifies the Juice Shop product search API returns products matching the query. */
 public class JuiceShopProductSearchApiTest {
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void searchReturnsMatchingProducts() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 
@@ -22,7 +22,7 @@ public class JuiceShopProductSearchApiTest {
                 .stream().anyMatch(name -> name.toLowerCase().contains("apple")));
     }
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void searchWithNoMatchReturnsEmptyList() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 
@@ -32,7 +32,7 @@ public class JuiceShopProductSearchApiTest {
         assertTrue(response.jsonPath().getList("data").isEmpty());
     }
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void searchWithEmptyQueryReturnsAllProducts() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 
@@ -42,7 +42,7 @@ public class JuiceShopProductSearchApiTest {
         assertTrue(response.jsonPath().getList("data").size() > 0);
     }
 
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void searchWithSpecialCharactersReturnsEmptyList() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 
@@ -57,7 +57,7 @@ public class JuiceShopProductSearchApiTest {
      * an unescaped query breaks the backing query and surfaces a raw SQLite error (500)
      * instead of a handled 4xx response. Regression check, not exploitation.
      */
-    @Test(groups = "api")
+    @Test(groups = {"api", "regression"})
     public void searchWithSqlInjectionPayloadReturnsServerError() {
         ApiClient apiClient = new ApiClient(TestConfig.baseUri());
 

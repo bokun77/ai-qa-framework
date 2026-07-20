@@ -9,7 +9,7 @@ import static org.testng.Assert.assertEquals;
 /** Verifies the Juice Shop homepage loads successfully in a browser. */
 public class JuiceShopHomePageTest extends BaseUiTest {
 
-    @Test(groups = "ui")
+    @Test(groups = {"ui", "smoke"})
     public void homePageLoadsWithExpectedTitle() {
         JuiceShopHomePage homePage = new JuiceShopHomePage(driver);
 
