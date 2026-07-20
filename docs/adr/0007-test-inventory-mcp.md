@@ -61,6 +61,17 @@ Trade-offs:
 - Two independent MCP capabilities reading two different data sources (`qa-reporting`, `qa-test`) increases the surface area MCP needs to keep read-only and non-interpretive as it grows; this requires the same ongoing discipline ADR-0006 already flagged for the `qa-ai`/MCP boundary.
 - Like `get_test_summary`, `get_test_inventory` is deliberately limited to raw passthrough data; it provides no analysis of coverage, redundancy, or test quality.
 
+## Notes: `get_test_inventory` vs. `get_test_summary`
+
+Now that both capabilities are implemented, it is worth restating explicitly how they relate, since their outputs can otherwise look like they disagree:
+
+- `get_test_inventory` describes available test definitions — every `@Test` method declared in `qa-test`'s source tree, regardless of whether or when it was last run.
+- `get_test_summary` describes the latest execution artifact (`execution-summary.txt`) — only the tests that were actually run in the most recent `qa-test` execution.
+- These two capabilities are intentionally independent. They read different data sources (`qa-test` source vs. `qa-reporting`'s output) and neither is derived from or validated against the other.
+- A summary can legitimately contain fewer tests than the inventory. `qa-test`'s TestNG group/suite-filtering support means a run can be scoped to a subset of tests (e.g. `-Dgroups=api`), and the summary will only reflect that subset.
+- MCP does not merge, cross-reference, or infer anything from the difference between the two. It does not flag tests present in inventory but absent from the summary as "not run," "missing," or "failing" — that would be interpretation, which both tools are explicitly scoped to avoid.
+- MCP remains read-only across both capabilities: this note describes how their outputs relate, not a new merging or diffing feature.
+
 ## Future Triggers
 
 Implementation of `get_test_inventory` may begin once:

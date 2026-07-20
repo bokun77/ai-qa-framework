@@ -11,6 +11,32 @@ It exposes two tools:
   `qa-reporting`'s `ExecutionReportWriter` during a test run) and returns pass/fail/skip
   counts plus each test's name, status, screenshot path, and failure message.
 
+## Understanding the tools
+
+`get_test_inventory` and `get_test_summary` answer different questions and read different
+data sources. It is expected for their numbers to diverge — that is not a bug in either tool.
+
+**`get_test_inventory`**
+
+- Reads the `qa-test` source tree (`qa-test/src/test/java`).
+- Shows what tests *exist*, regardless of whether or when they were last run.
+- Example: 10 classes / 20 methods declared in source.
+
+**`get_test_summary`**
+
+- Reads `qa-test/target/qa-reports/execution-summary.txt`.
+- Shows what ran in the *latest execution*, not the full inventory.
+- A full run (e.g. `mvn verify`) may execute the whole suite, so its summary may contain
+  both UI and API tests.
+- A filtered run (e.g. `mvn test -Dgroups=api`) only executes tests in the `api` TestNG
+  group, so its summary will contain only API tests — fewer than the 20 methods
+  `get_test_inventory` reports.
+
+This is expected behavior, not a discrepancy to reconcile: `qa-test`'s TestNG group/suite
+filtering means the two tools are not supposed to always report the same counts. Neither
+tool merges, cross-references, or infers anything from the other's output — see
+[ADR-0007](../../docs/adr/0007-test-inventory-mcp.md) for the rationale.
+
 ## What this is not
 
 Per [ADR-0006](../../docs/adr/0006-mcp-integration-strategy.md) and

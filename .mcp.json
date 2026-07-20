@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "qa-framework": {
+      "command": "node",
+      "args": [
+        "/Users/djordjebokun/ai-qa-framework/mcp/qa-framework-mcp/src/index.js"
+      ]
+    }
+  }
+}
