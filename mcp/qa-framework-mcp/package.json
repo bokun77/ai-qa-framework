@@ -1,0 +1,20 @@
+{
+  "name": "qa-framework-mcp",
+  "version": "0.1.0",
+  "description": "Read-only MCP server exposing ai-qa-framework's static test inventory (ADR-0007). Outside the Maven reactor; depends on nothing in this repo's Java modules.",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "qa-framework-mcp": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  }
+}
