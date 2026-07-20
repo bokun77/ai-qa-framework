@@ -46,10 +46,16 @@ Neither capability performs AI interpretation; both are raw passthroughs of exis
 
 With test coverage expansion complete through v1.3.0 and `qa-reporting`'s execution artifacts stable, the next phase turns to the `qa-ai` module, which per [ADR-0005](docs/adr/0005-ai-capability-sequencing.md) has remained an empty, isolated placeholder until this point.
 
-Planned milestones:
+Milestones:
 
-- **ADR-0008: Failure Analyzer Contract** — defines the input/output contract for the Failure Analyzer and the boundaries between `qa-ai` and MCP. Planning only; no implementation.
-- **Failure Analyzer v1** — consumes `execution-summary` artifacts, analyzes failed tests, classifies failures, and provides recommendations.
+- **ADR-0008: Failure Analyzer Contract** (done) — defines the input/output contract for the Failure Analyzer and the boundaries between `qa-ai` and MCP. Accepted.
+- **qa-ai v0.1** (done) — `qa-ai` module created per ADR-0008's contract: `ExecutionSummaryReader` reads `qa-reporting`'s execution artifact by path (no dependency on `qa-reporting`), and a stub `UnclassifiedFailureAnalyzer` proves the Output Contract shape end-to-end with no interpretation.
+- **qa-ai v0.2 — deterministic failure classification** (done):
+  - `FailureCategory` vocabulary finalized: `UI_SYNCHRONIZATION`, `ASSERTION_FAILURE`, `API_FAILURE`, `AUTHENTICATION_FAILURE`, `ENVIRONMENT_FAILURE`, `UNKNOWN`.
+  - `RuleBasedFailureAnalyzer` classifies each failed test using fixed, keyword/regex-based rules against the failure message only (Selenium click-intercept/overlay wording, assertion wording, HTTP 4xx/5xx and API wording, login/auth/token wording, connection/timeout wording) — no AI provider dependency.
+  - Fixed precedence order when a message matches more than one category: `UI_SYNCHRONIZATION` > `ASSERTION_FAILURE` > `API_FAILURE` > `AUTHENTICATION_FAILURE` > `ENVIRONMENT_FAILURE` > `UNKNOWN` — the first matching rule wins, and this order is covered by dedicated precedence tests.
+  - `UnclassifiedFailureAnalyzer` (v0.1) remains as a distinct "not analyzed" fallback, separate from `RuleBasedFailureAnalyzer`'s "analyzed, no rule matched" `UNKNOWN`.
+- **Failure Analyzer v1 (LLM-enhanced)** — not yet started and intentionally deferred. Replacing or augmenting rule-based classification with an AI/LLM provider requires resolving ADR-0008's Security Considerations (data handling, provider choice, retention policy) in a follow-up plan first; v0.2's rule-based classification is not a placeholder to be discarded but a durable fallback for cases an LLM can't confidently classify either.
 
 Future possibilities (not yet sequenced):
 

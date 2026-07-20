@@ -14,7 +14,7 @@ The project is a multi-module Maven build:
 | `qa-web` | Selenium WebDriver setup, screenshot capture, and Page Objects for the app under test. |
 | `qa-api` | Minimal REST Assured-based HTTP client for API test scenarios. |
 | `qa-reporting` | Writes a plain-text execution summary (pass/fail/skip) for each test run. |
-| `qa-ai` | Placeholder module for future AI-assisted testing capabilities. No implementation yet — see [Roadmap](ROADMAP.md). |
+| `qa-ai` | Internal AI analysis module.<br>**Current capabilities:** reads execution-summary artifacts; deterministic failure classification; `FailureAnalysis` contract.<br>**Current scope:** no LLM integration yet; no automatic test modification; no MCP exposure. See [qa-ai/README.md](qa-ai/README.md) and [Roadmap](ROADMAP.md). |
 | `qa-test` | Test execution layer: TestNG suite, UI and API test classes, and the execution listener that ties reporting into the test run. |
 
 ## Prerequisites
