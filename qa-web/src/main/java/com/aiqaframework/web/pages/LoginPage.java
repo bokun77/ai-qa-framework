@@ -10,6 +10,9 @@ public class LoginPage extends BasePage {
     private static final By LOGIN_BUTTON = By.id("loginButton");
     private static final By ERROR_MESSAGE = By.className("error");
     private static final By LANGUAGE_SNACKBAR = By.cssSelector(".mat-mdc-snack-bar-label");
+    private static final By ACCOUNT_MENU_BUTTON = By.id("navbarAccount");
+    private static final By LOGOUT_BUTTON = By.id("navbarLogoutButton");
+    private static final By LOGIN_MENU_ITEM = By.id("navbarLoginButton");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -33,5 +36,15 @@ public class LoginPage extends BasePage {
 
     public void waitForRedirectAwayFromLogin() {
         waitForUrlNotContaining("/login");
+    }
+
+    public void logout() {
+        clickWhenReady(ACCOUNT_MENU_BUTTON);
+        clickWhenReady(LOGOUT_BUTTON);
+    }
+
+    public boolean isLoggedOut() {
+        clickWhenReady(ACCOUNT_MENU_BUTTON);
+        return waitForVisible(LOGIN_MENU_ITEM).isDisplayed();
     }
 }

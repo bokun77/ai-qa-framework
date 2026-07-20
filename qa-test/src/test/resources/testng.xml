@@ -17,6 +17,7 @@
         <classes>
             <class name="com.aiqaframework.test.JuiceShopHomePageTest"/>
             <class name="com.aiqaframework.test.LoginTest"/>
+            <class name="com.aiqaframework.test.LogoutTest"/>
             <class name="com.aiqaframework.test.ProductSearchTest"/>
             <class name="com.aiqaframework.test.AddToCartTest"/>
         </classes>
